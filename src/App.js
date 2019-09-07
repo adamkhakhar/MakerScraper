@@ -4,6 +4,7 @@ import s from 'styled-components'
 import DataReader from './DataReader'
 
 import './App.css'
+import MapboxDispatcher from './MapboxDispatcher'
 
 const Body = s.div`
   padding: 1rem 2rem;
@@ -13,6 +14,9 @@ function App() {
   const reader = new DataReader()
   const properties = reader.getDistrictProperties()
   const latLongs = reader.getLatLongs()
+
+  const dispatcher = new MapboxDispatcher()
+  dispatcher.geocodeAddress('3688 Buena Park Drive, Studio City, CA 91604')
 
   console.log(latLongs)
 
