@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Nav from './Nav'
+import s from 'styled-components'
+import DataReader from './DataReader'
+
+import './App.css'
+
+const Body = s.div`
+  padding: 1rem 2rem;
+`
 
 function App() {
+  const reader = new DataReader()
+  const properties = reader.getDistrictProperties()
+  const latLongs = reader.getLatLongs()
+
+  console.log(latLongs)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Nav />
+      <Body>
+        {properties.map(({ name, city, addr }) => (
+          <div key={name}>
+            <h4 style={{ marginBottom: '0.2rem' }}>{name}</h4>
+            <p>
+              <strong>City:</strong> {city}
+              <br />
+              <strong>Address:</strong> {addr}
+            </p>
+          </div>
+        ))}
+      </Body>
+    </>
+  )
 }
 
-export default App;
+export default App
