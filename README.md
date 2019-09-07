@@ -1,3 +1,15 @@
+### Developing
+
+Create an `env.sh` file in the root of this project of the form:
+
+```text
+export REACT_APP_MAPBOX_API_KEY={YOUR_API_KEY_HERE}
+```
+
+Run `npm install` to install dependencies, and then `npm start`.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
